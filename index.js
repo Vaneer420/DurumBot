@@ -1,3 +1,18 @@
+// WEB SERVER SETUP
+// Web server is setup to keep the bot online 24/7.
+const http = require('http');
+const express = require('express');
+const app = express();
+var server = http.createServer(app);
+
+app.get('/', (req, res) => {
+  res.sendStatus(200);
+});
+
+const listener = server.listen(process.env.PORT, function() {
+  console.log(`Listening on port ${listener.address().port}.`);
+});
+
 // INITIALIZATION
 const {GatewayIntentBits, Client, ActivityType} = require("discord.js");
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers]})
