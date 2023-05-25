@@ -15,8 +15,7 @@ const listener = server.listen(process.env.PORT, function() {
 
 // INITIALIZATION
 const {GatewayIntentBits, Client, ActivityType} = require("discord.js");
-const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers]})
-const durumlink = 'https://media.discordapp.net/attachments/867849563686830140/989606258380275722/image0-15.gif';
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers]});
 
 var guild;
 let memberCount = 0;
@@ -32,7 +31,8 @@ client.on('ready', () => {
 // HANDLING DURUM CHANNEL
 client.on('messageCreate', message => {
   if(message.channelId == process.env.channel_id) {
-    if(message.content != durumlink) {
+    if(message.content != 'https://media.discordapp.net/attachments/867849563686830140/989606258380275722/image0-15.gif') {
+      console.log('deleted message with content: ' + message.content)
       message.delete();
     }
   }
